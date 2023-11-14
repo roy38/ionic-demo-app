@@ -1,0 +1,40 @@
+<ion-content class="ion-padding">
+  <div class="flex-custom">
+    <div>
+
+      <ion-item fill="outline" class="mb-5">
+        <ion-label position="floating">Username</ion-label>
+        <ion-input class="border-none"></ion-input>
+      </ion-item>
+
+      <ion-item fill="outline" class="mb-5">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input class="border-none" type="password"></ion-input>
+      </ion-item>
+
+      <ion-item fill="outline" class="mb-5">
+        <ion-label position="floating">Confirm Password</ion-label>
+        <ion-input class="border-none" type="password"></ion-input>
+      </ion-item>
+
+      <ion-item fill="outline" class="mb-5">
+        <ion-list>
+          <ion-item>
+            <ion-select placeholder="Role">
+              <ion-select-option value="Lorem ipsum 1">Admin</ion-select-option>
+              <ion-select-option value="Lorem ipsum 2">Non Admin</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+
+      <ion-button class="btn-login ">SIGN UP</ion-button>
+
+    </div>
+
+    <div class="mt-10">
+      Already have an account? <span routerLink="/login" class="signup">SIGN IN</span>
+    </div>
+
+  </div>
+</ion-content>

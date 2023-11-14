@@ -24,3 +24,48 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+
+$btncolor: #F82C2C;
+
+.flex-custom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .btn-login {
+        --background: #F82C2C;
+        width: 100%;
+    }
+
+    .signup {
+        color: #F82C2C;
+    }
+}
+
+.gbl-btn {
+    --background: #F82C2C;
+}
+
+ion-toolbar {
+    text-transform: capitalize;
+    --background: #F82C2C;
+    color: #FFF;
+}
+
+ion-tabs {
+    ion-tab-bar {
+        ion-tab-button {
+            --color-selected: #F82C2C;
+        }
+    }
+}
+
+ion-list.list {
+    ion-item {
+        --background: #F82C2C;
+        color: #FFF;
+    }
+}

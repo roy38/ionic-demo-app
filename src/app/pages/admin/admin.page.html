@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>admin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">admin</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="mt-20 px-10">
+    <div>
+
+      <ion-item fill="outline" class="mb-5">
+        <ion-label position="floating">Horse Name</ion-label>
+        <ion-input class="border-none"></ion-input>
+      </ion-item>
+
+      <ion-item fill="outline" class="mb-5">
+        <ion-label position="floating">Jockey</ion-label>
+        <ion-input class="border-none"></ion-input>
+      </ion-item>
+
+      <ion-item fill="outline" class="mb-5">
+        <ion-label position="floating">Trainer</ion-label>
+        <ion-input class="border-none"></ion-input>
+      </ion-item>
+
+      <ion-button class="text-capitalize block gbl-btn h-14">insert</ion-button>
+
+      <ion-list class="list mt-16">
+        <ion-item class="text-right mb-2">
+          <ion-label>
+            <ion-icon name="star" class="mr-2"></ion-icon> 
+            <ion-button (click)="showModal()" class="text-uppercase">view</ion-button> 
+            <ion-button (click)="edit()" class="text-uppercase">edit</ion-button> 
+            <ion-button (click)="delete()" class="text-uppercase">delete</ion-button>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+    </div>
+  </div>
+
+</ion-content>

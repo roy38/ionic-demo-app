@@ -1,0 +1,11 @@
+.filter-container {
+    ion-item {
+        --background: #F82C2C;
+        color: #FFF;
+        ion-select {
+            ion-select-option {
+                color: #FFF;
+            }
+        }
+    }
+}
