@@ -1,20 +1,30 @@
 <ion-content class="ion-padding">
   <div class="flex-custom">
-    <div>
+    <form [formGroup]="loginForm" novalidate>
 
+      <div *ngIf="this.loginForm.controls?.['username'].touched && this.loginForm.controls?.['username'].invalid">
+        <ion-text *ngIf="errorControl.username.errors?.required">
+          Username is required
+        </ion-text>
+      </div>
       <ion-item fill="outline" class="mb-5">
         <ion-label position="floating">Username</ion-label>
-        <ion-input class="border-none"></ion-input>
+        <ion-input formControlName="username" class="border-none"></ion-input>
       </ion-item>
 
+      <div *ngIf="this.loginForm.controls?.['password'].touched && this.loginForm.controls?.['password'].invalid">
+        <ion-text *ngIf="errorControl.password.errors?.required">
+          Password is required
+        </ion-text>
+      </div>
       <ion-item fill="outline" class="mb-5">
         <ion-label position="floating">Password</ion-label>
-        <ion-input class="border-none" type="password"></ion-input>
+        <ion-input formControlName="password" class="border-none" type="password"></ion-input>
       </ion-item>
 
-      <ion-button class="btn-login ">LOGIN</ion-button>
+      <ion-button (click)="signIn()" class="btn-login">LOGIN</ion-button>
 
-    </div>
+    </form>
 
     <div class="mt-10">
       Don't have an account? <span routerLink="/signup" class="signup">SIGN UP</span>

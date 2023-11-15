@@ -13,37 +13,52 @@
   </ion-header>
 
   <div class="mt-20 px-10">
-    <div>
+    <form [formGroup]="categoryForm" novalidate>
 
+      <div *ngIf="this.categoryForm.controls?.['horseName'].touched && this.categoryForm.controls?.['horseName'].invalid">
+        <ion-text *ngIf="errorControl.horseName.errors?.required">
+          Horse name is required
+        </ion-text>
+      </div>
       <ion-item fill="outline" class="mb-5">
         <ion-label position="floating">Horse Name</ion-label>
-        <ion-input class="border-none"></ion-input>
+        <ion-input formControlName="horseName" class="border-none"></ion-input>
       </ion-item>
 
+      <div *ngIf="this.categoryForm.controls?.['jockey'].touched && this.categoryForm.controls?.['jockey'].invalid">
+        <ion-text *ngIf="errorControl.jockey.errors?.required">
+          Jockey is required
+        </ion-text>
+      </div>
       <ion-item fill="outline" class="mb-5">
         <ion-label position="floating">Jockey</ion-label>
-        <ion-input class="border-none"></ion-input>
+        <ion-input formControlName="jockey" class="border-none"></ion-input>
       </ion-item>
 
+      <div *ngIf="this.categoryForm.controls?.['trainer'].touched && this.categoryForm.controls?.['trainer'].invalid">
+        <ion-text *ngIf="errorControl.trainer.errors?.required">
+          Trainer is required
+        </ion-text>
+      </div>
       <ion-item fill="outline" class="mb-5">
         <ion-label position="floating">Trainer</ion-label>
-        <ion-input class="border-none"></ion-input>
+        <ion-input formControlName="trainer" class="border-none"></ion-input>
       </ion-item>
 
-      <ion-button class="text-capitalize block gbl-btn h-14">insert</ion-button>
+      <ion-button (click)="add()" class="text-capitalize block gbl-btn h-14">insert</ion-button>
 
       <ion-list class="list mt-16">
         <ion-item class="text-right mb-2">
           <ion-label>
             <ion-icon name="star" class="mr-2"></ion-icon> 
             <ion-button (click)="showModal()" class="text-uppercase">view</ion-button> 
-            <ion-button (click)="edit()" class="text-uppercase">edit</ion-button> 
-            <ion-button (click)="delete()" class="text-uppercase">delete</ion-button>
+            <ion-button (click)="edit()" class="text-uppercase" color="warning">edit</ion-button> 
+            <ion-button (click)="delete()" class="text-uppercase" color="danger">delete</ion-button>
           </ion-label>
         </ion-item>
       </ion-list>
 
-    </div>
+    </form>
   </div>
 
 </ion-content>

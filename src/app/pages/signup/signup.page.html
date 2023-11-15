@@ -1,36 +1,56 @@
 <ion-content class="ion-padding">
   <div class="flex-custom">
-    <div>
+    <form [formGroup]="signupForm" novalidate>
 
+      <div *ngIf="this.signupForm.controls?.['username'].touched && this.signupForm.controls?.['username'].invalid">
+        <ion-text *ngIf="errorControl.username.errors?.required">
+          Username is required
+        </ion-text>
+      </div>
       <ion-item fill="outline" class="mb-5">
         <ion-label position="floating">Username</ion-label>
-        <ion-input class="border-none"></ion-input>
+        <ion-input formControlName="username" class="border-none"></ion-input>
       </ion-item>
 
+      <div *ngIf="this.signupForm.controls?.['password'].touched && this.signupForm.controls?.['password'].invalid">
+        <ion-text *ngIf="errorControl.password.errors?.required">
+          Password is required
+        </ion-text>
+      </div>
       <ion-item fill="outline" class="mb-5">
         <ion-label position="floating">Password</ion-label>
-        <ion-input class="border-none" type="password"></ion-input>
+        <ion-input formControlName="password" class="border-none" type="password"></ion-input>
       </ion-item>
 
+      <div *ngIf="this.signupForm.controls?.['confirmPassword'].touched && this.signupForm.controls?.['confirmPassword'].invalid">
+        <ion-text *ngIf="errorControl.confirmPassword.errors?.required">
+          Confirm Password is required
+        </ion-text>
+      </div>
       <ion-item fill="outline" class="mb-5">
         <ion-label position="floating">Confirm Password</ion-label>
-        <ion-input class="border-none" type="password"></ion-input>
+        <ion-input formControlName="confirmPassword" class="border-none" type="password"></ion-input>
       </ion-item>
 
+      <div *ngIf="this.signupForm.controls?.['role'].touched && this.signupForm.controls?.['role'].invalid">
+        <ion-text *ngIf="errorControl.role.errors?.required">
+          Role is required
+        </ion-text>
+      </div>
       <ion-item fill="outline" class="mb-5">
         <ion-list>
           <ion-item>
-            <ion-select placeholder="Role">
-              <ion-select-option value="Lorem ipsum 1">Admin</ion-select-option>
-              <ion-select-option value="Lorem ipsum 2">Non Admin</ion-select-option>
+            <ion-select formControlName="role" placeholder="Role">
+              <ion-select-option value="Admin">Admin</ion-select-option>
+              <ion-select-option value="Non-Admin">Non Admin</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
       </ion-item>
 
-      <ion-button class="btn-login ">SIGN UP</ion-button>
+      <ion-button (click)="signUp()" class="btn-login">SIGN UP</ion-button>
 
-    </div>
+    </form>
 
     <div class="mt-10">
       Already have an account? <span routerLink="/login" class="signup">SIGN IN</span>

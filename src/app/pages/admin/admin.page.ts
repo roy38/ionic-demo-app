@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { MyModalPage } from 'src/app/my-modal/my-modal.page';
 
@@ -8,10 +9,20 @@ import { MyModalPage } from 'src/app/my-modal/my-modal.page';
   styleUrls: ['./admin.page.scss'],
 })
 export class AdminPage implements OnInit {
+  categoryForm: FormGroup | undefined
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, public formBuilder:FormBuilder) { }
 
   ngOnInit() {
+    this.categoryForm = this.formBuilder.group({
+      horseName: ['', [Validators.required]],
+      jockey: ['', [Validators.required]],
+      trainer: ['', [Validators.required]]
+    })
+  }
+
+  get errorControl () {
+    return this.categoryForm?.controls
   }
 
   // show modal
@@ -22,6 +33,13 @@ export class AdminPage implements OnInit {
     });
 
     await modal.present();
+  }
+
+  // add category
+  add() {
+    if(this.categoryForm?.valid) {
+      
+    }
   }
 
   // edit category

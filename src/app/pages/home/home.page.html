@@ -13,20 +13,30 @@
   </ion-header>
 
   <div class="mt-20 px-10">
-    <div>
+    <form [formGroup]="searchForm" novalidate>
 
       <ion-grid>
         <ion-row>
           <ion-col size="8">
+            <div *ngIf="this.searchForm.controls?.['name'].touched && this.searchForm.controls?.['name'].invalid">
+              <ion-text *ngIf="errorControl.name.errors?.required">
+                Search is required
+              </ion-text>
+            </div>
             <ion-item fill="outline" class="mb-5">
               <ion-label position="floating">Search</ion-label>
-              <ion-input class="border-none"></ion-input>
+              <ion-input formControlName="name" class="border-none"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col size="4">
             <ion-list class="filter-container">
+              <div *ngIf="this.searchForm.controls?.['category'].touched && this.searchForm.controls?.['category'].invalid">
+                <ion-text *ngIf="errorControl.category.errors?.required">
+                  Required
+                </ion-text>
+              </div>
               <ion-item>
-                <ion-select placeholder="Filter">
+                <ion-select formControlName="category" placeholder="Filter">
                   <ion-select-option value="Lorem ipsum 1">Lorem ipsum 1</ion-select-option>
                   <ion-select-option value="Lorem ipsum 2">Lorem ipsum 2</ion-select-option>
                   <ion-select-option value="Lorem ipsum 3">Lorem ipsum 3</ion-select-option>
@@ -35,24 +45,35 @@
             </ion-list>
           </ion-col>
           <ion-col size="12" class="text-center">
-            <ion-button class="text-capitalize" class="submit-btn h-14 w-32 mb-6">submit</ion-button>
+            <ion-button (click)="search()" class="text-capitalize" class="submit-btn h-14 w-32 mb-6">submit</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
 
       <ion-list class="list">
         <ion-item class="text-right mb-2">
-          <ion-label><ion-icon name="star" class="mr-2"></ion-icon> Lorem Ipsum 1</ion-label>
+          <ion-label>
+            Lorem Ipsum 1
+            <ion-button (click)="addToFavorite()" class="text-uppercase" color="success">add to favorite</ion-button>
+          </ion-label>
         </ion-item>
         <ion-item class="text-right mb-2">
-          <ion-label><ion-icon name="star" class="mr-2"></ion-icon> Lorem Ipsum 2</ion-label>
+          <ion-label>
+            <ion-icon name="star" class="mr-2"></ion-icon> 
+            Lorem Ipsum 2
+            <ion-button (click)="removeFavorite()" class="text-uppercase" color="danger">remove favorite</ion-button>
+          </ion-label>
         </ion-item>
         <ion-item class="text-right mb-2">
-          <ion-label><ion-icon name="star" class="mr-2"></ion-icon> Lorem Ipsum 3</ion-label>
+          <ion-label>
+            <ion-icon name="star" class="mr-2"></ion-icon> 
+            Lorem Ipsum 3
+            <ion-button (click)="removeFavorite()" class="text-uppercase" color="danger">remove favorite</ion-button>
+          </ion-label>
         </ion-item>
       </ion-list>
 
-    </div>
+    </form>
   </div>
 
 </ion-content>
