@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/auth-service.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class HomePage implements OnInit {
   searchForm: FormGroup | undefined
 
-  constructor(public formBuilder:FormBuilder) { }
+  constructor(public formBuilder:FormBuilder, private router: Router, private authService: AuthServiceService) { }
 
   ngOnInit() {
     this.searchForm = this.formBuilder.group({
@@ -37,5 +39,12 @@ export class HomePage implements OnInit {
   //delete to favorite
   removeFavorite() {
 
+  }
+
+  async logoutUser() {
+    const user = await this.authService.logoutUser();
+    if (user) {
+      this.router.navigate(['login'])
+    }
   }
 }

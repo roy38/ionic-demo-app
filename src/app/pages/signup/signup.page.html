@@ -27,6 +27,11 @@
           Confirm Password is required
         </ion-text>
       </div>
+      <div *ngIf="this.signupForm.controls?.['confirmPassword'].touched">
+        <ion-text *ngIf="this.signupForm.hasError('passwordNotMatch')">
+          Password and Confirm Password fields should match
+        </ion-text>
+      </div>
       <ion-item fill="outline" class="mb-5">
         <ion-label position="floating">Confirm Password</ion-label>
         <ion-input formControlName="confirmPassword" class="border-none" type="password"></ion-input>
@@ -53,7 +58,7 @@
     </form>
 
     <div class="mt-10">
-      Already have an account? <span routerLink="/login" class="signup">SIGN IN</span>
+      Already have an account? <span routerLink="/login" class="signup cursor-pointer">SIGN IN</span>
     </div>
 
   </div>

@@ -10,6 +10,7 @@ import { AuthServiceService } from 'src/app/auth-service.service';
 })
 export class LoginPage implements OnInit {
   loginForm: FormGroup | undefined
+  public errMsg = ''
 
   constructor(public formBuilder:FormBuilder, private router: Router, private authService: AuthServiceService) { }
 
@@ -29,6 +30,8 @@ export class LoginPage implements OnInit {
       const user = await this.authService.loginUser(this.loginForm.value.username, this.loginForm.value.password)
       if (user) {
         this.router.navigate(['/tabs/home'])
+      } else {
+        this.errMsg = 'Account does not exist.';
       }
     }
   }

@@ -14,12 +14,23 @@ export class SignupPage implements OnInit {
   constructor(public formBuilder:FormBuilder, private router: Router, private authService: AuthServiceService) { }
 
   ngOnInit() {
-    this.signupForm = this.formBuilder.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]],
-      role: ['', [Validators.required]]
-    })
+    this.signupForm = this.formBuilder.group(
+      {
+        username: ['', [Validators.required]],
+        password: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required]],
+        role: ['', [Validators.required]]
+      },
+      {
+        validators: this.matchValidator.bind(this)
+      }
+    )
+  }
+
+  matchValidator(formGroup: FormGroup) {
+    const password = formGroup.value.password;
+    const confirmPassword = formGroup.value.confirmPassword
+    return password === confirmPassword ? null : { passwordNotMatch: true }
   }
 
   get errorControl () {

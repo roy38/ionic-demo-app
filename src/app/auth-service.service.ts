@@ -12,7 +12,12 @@ export class AuthServiceService {
   }
 
   async loginUser(username: string, password: string) {
-    return await this.getLocalStorageItem('loginUser')
+    return localStorage.getItem('loginUser')
+  }
+
+  async logoutUser() {
+    localStorage.removeItem('loginUser');
+    return true;
   }
 
   async isAuthenticated() {

@@ -22,12 +22,14 @@
         <ion-input formControlName="password" class="border-none" type="password"></ion-input>
       </ion-item>
 
+      <ion-text *ngIf="errMsg" class="text-center block mb-2" color="danger"> {{ errMsg }} </ion-text>
+
       <ion-button (click)="signIn()" class="btn-login">LOGIN</ion-button>
 
     </form>
 
     <div class="mt-10">
-      Don't have an account? <span routerLink="/signup" class="signup">SIGN UP</span>
+      Don't have an account? <span routerLink="/signup" class="signup cursor-pointer">SIGN UP</span>
     </div>
 
   </div>
