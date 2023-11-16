@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.state';
+import { selectFavorite } from 'src/app/store/selectors/favorite.selectors';
 
 @Component({
   selector: 'app-favorite',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favorite.page.scss'],
 })
 export class FavoritePage implements OnInit {
+  favorites: any[] = [];
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.store.select(selectFavorite).subscribe(res => {
+      this.favorites = res.favorites
+    })
   }
 
 }

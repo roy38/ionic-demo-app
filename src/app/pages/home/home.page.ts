@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/auth-service.service';
+import { addToFavorite, removeFavorite } from 'src/app/store/actions/favorite.actions';
+import { Favorite } from '../favorite/favorite.model'
 
 @Component({
   selector: 'app-home',
@@ -11,7 +14,7 @@ import { AuthServiceService } from 'src/app/auth-service.service';
 export class HomePage implements OnInit {
   searchForm: FormGroup | undefined
 
-  constructor(public formBuilder:FormBuilder, private router: Router, private authService: AuthServiceService) { }
+  constructor(public formBuilder:FormBuilder, private router: Router, private store: Store, private authService: AuthServiceService) { }
 
   ngOnInit() {
     this.searchForm = this.formBuilder.group({
@@ -32,13 +35,13 @@ export class HomePage implements OnInit {
   }
 
   // insert to favorite
-  addToFavorite() {
-
+  addToFavorite(name?: string) {
+    this.store.dispatch(addToFavorite({ name: name }))
   }
 
   //delete to favorite
-  removeFavorite() {
-
+  removeFavorite(favorite?: Favorite) {
+    this.store.dispatch(removeFavorite({ id: favorite.id }))
   }
 
   async logoutUser() {
