@@ -1,8 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { addToFavorite, removeFavorite } from "../actions/favorite.actions";
-import { AppState } from "../app.state";
-import { Favorite } from "src/app/pages/favorite/favorite.model";
-
+import { Favorite } from "src/app/models/favorite.model";
 
 export interface FavoriteState {
     favorites: Favorite[]

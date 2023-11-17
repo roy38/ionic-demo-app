@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/auth-service.service';
 import { addToFavorite, removeFavorite } from 'src/app/store/actions/favorite.actions';
-import { Favorite } from '../favorite/favorite.model'
+import { Favorite } from '../../models/favorite.model'
 
 @Component({
   selector: 'app-home',
