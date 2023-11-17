@@ -15,14 +15,14 @@
   <div class="mt-20 px-10">
     <form [formGroup]="categoryForm" novalidate>
 
-      <div *ngIf="this.categoryForm.controls?.['horseName'].touched && this.categoryForm.controls?.['horseName'].invalid">
-        <ion-text *ngIf="errorControl.horseName.errors?.required">
+      <div *ngIf="this.categoryForm.controls?.['horse'].touched && this.categoryForm.controls?.['horse'].invalid">
+        <ion-text *ngIf="errorControl.horse.errors?.required">
           Horse name is required
         </ion-text>
       </div>
       <ion-item fill="outline" class="mb-5">
         <ion-label position="floating">Horse Name</ion-label>
-        <ion-input formControlName="horseName" class="border-none"></ion-input>
+        <ion-input formControlName="horse" class="border-none"></ion-input>
       </ion-item>
 
       <div *ngIf="this.categoryForm.controls?.['jockey'].touched && this.categoryForm.controls?.['jockey'].invalid">

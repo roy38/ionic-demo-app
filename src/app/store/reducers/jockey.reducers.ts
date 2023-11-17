@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { addJockey, removeJockey } from "../actions/jockey.actions";
+import { addJockey, updateJockey, removeJockey } from "../actions/jockey.actions";
 import { Jockey } from "src/app/models/jockey.model";
 
 export interface JockeyState {
@@ -16,6 +16,11 @@ export const jockeyReducer = createReducer(
     on(addJockey, (state, { name }) => ({
         ...state,
         jockeys: [...state.jockeys, {id: Date.now().toString(), name: name, timeStamp: Date.now().toString()}]
+    })),
+
+    on(updateJockey, (state, { item }) => ({
+        ...state,
+        jockeys: state.jockeys.map((jockey) => jockey.id === item.id ? item : jockey)
     })),
 
     on(removeJockey, (state, { id }) => ({

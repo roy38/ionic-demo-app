@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { addHorse, removeHorse } from "../actions/horse.actions";
+import { addHorse, updateHorse, removeHorse } from "../actions/horse.actions";
 import { Horse } from "src/app/models/horse.model";
 
 export interface HorseState {
@@ -16,6 +16,11 @@ export const horseReducer = createReducer(
     on(addHorse, (state, { name }) => ({
         ...state,
         horses: [...state.horses, {id: Date.now().toString(), name: name, timeStamp: Date.now().toString()}]
+    })),
+
+    on(updateHorse, (state, { item }) => ({
+        ...state,
+        horses: state.horses.map((horse) => horse.id === item.id ? item : horse)
     })),
 
     on(removeHorse, (state, { id }) => ({
