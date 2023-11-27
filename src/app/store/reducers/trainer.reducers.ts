@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { addTrainer, removeTrainer, updateTrainer } from "../actions/trainer.actions";
+import { addTrainer, updateTrainer, removeTrainer } from "../actions/trainer.actions";
 import { Trainer } from "src/app/models/trainer.model";
 
 export interface TrainerState {
@@ -13,9 +13,9 @@ export const initialState: TrainerState = {
 export const trainerReducer = createReducer(
     initialState,
 
-    on(addTrainer, (state, { name }) => ({
+    on(addTrainer, (state, { name, typeIs }) => ({
         ...state,
-        trainers: [...state.trainers, {id: Date.now().toString(), name: name, timeStamp: Date.now().toString()}]
+        trainers: [...state.trainers, {id: Date.now().toString(), name: name, typeIs: typeIs, timeStamp: Date.now().toString()}]
     })),
 
     on(updateTrainer, (state, { item }) => ({

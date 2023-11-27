@@ -13,9 +13,9 @@ export const initialState: JockeyState = {
 export const jockeyReducer = createReducer(
     initialState,
 
-    on(addJockey, (state, { name }) => ({
+    on(addJockey, (state, { name, typeIs }) => ({
         ...state,
-        jockeys: [...state.jockeys, {id: Date.now().toString(), name: name, timeStamp: Date.now().toString()}]
+        jockeys: [...state.jockeys, {id: Date.now().toString(), name: name, typeIs: typeIs, timeStamp: Date.now().toString()}]
     })),
 
     on(updateJockey, (state, { item }) => ({

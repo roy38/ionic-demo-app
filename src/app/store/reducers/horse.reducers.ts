@@ -13,9 +13,9 @@ export const initialState: HorseState = {
 export const horseReducer = createReducer(
     initialState,
 
-    on(addHorse, (state, { name }) => ({
+    on(addHorse, (state, { name, typeIs }) => ({
         ...state,
-        horses: [...state.horses, {id: Date.now().toString(), name: name, timeStamp: Date.now().toString()}]
+        horses: [...state.horses, {id: Date.now().toString(), name: name, typeIs: typeIs, timeStamp: Date.now().toString()}]
     })),
 
     on(updateHorse, (state, { item }) => ({

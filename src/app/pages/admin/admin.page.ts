@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { MyModalPage } from 'src/app/my-modal/my-modal.page';
-import { addHorse, removeHorse } from 'src/app/store/actions/horse.actions';
-import { addJockey, removeJockey } from 'src/app/store/actions/jockey.actions';
-import { addTrainer, removeTrainer } from 'src/app/store/actions/trainer.actions';
+import { addHorse, updateHorse, removeHorse } from 'src/app/store/actions/horse.actions';
+import { addJockey, updateJockey, removeJockey } from 'src/app/store/actions/jockey.actions';
+import { addTrainer, updateTrainer, removeTrainer } from 'src/app/store/actions/trainer.actions';
 
 @Component({
   selector: 'app-admin',
@@ -42,9 +42,9 @@ export class AdminPage implements OnInit {
   // add category
   add() {
     if(this.categoryForm?.valid) {
-      this.store.dispatch(addHorse({ name: this.categoryForm.value.horse }))
-      this.store.dispatch(addJockey({ name: this.categoryForm.value.jockey }))
-      this.store.dispatch(addTrainer({ name: this.categoryForm.value.trainer }))
+      this.store.dispatch(addHorse({ name: this.categoryForm.value.horse, typeIs: 'horse' }))
+      this.store.dispatch(addJockey({ name: this.categoryForm.value.jockey, typeIs: 'jockey' }))
+      this.store.dispatch(addTrainer({ name: this.categoryForm.value.trainer, typeIs: 'trainer' }))
     }
   }
 
@@ -60,18 +60,18 @@ export class AdminPage implements OnInit {
   }
 
   // update category
-  update(item?: string) {
-    // if (item.category == 'horse') {
-    //   this.store.dispatch(updateHorse({ item }))
-    // }
+  update(item?: [], category?: string) {
+    if (category == 'horse') {
+      this.store.dispatch(updateHorse({ item }))
+    }
 
-    // if (item.category == 'jockey') {
-    //   this.store.dispatch(updateJockey({ item }))
-    // }
+    if (category == 'jockey') {
+      this.store.dispatch(updateJockey({ item }))
+    }
 
-    // if (item.category == 'trainer') {
-    //   this.store.dispatch(updateTrainer({ item }))
-    // }
+    if (category == 'trainer') {
+      this.store.dispatch(updateTrainer({ item }))
+    }
   }
 
   // remove category

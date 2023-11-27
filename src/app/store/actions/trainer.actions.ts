@@ -1,7 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 
-export const addTrainer = createAction('[Item] Add to trainer', props<{name: string}>())
+export const addTrainer = createAction('[Trainer] Add to trainer', props<{name: string, typeIs: string}>())
 
-export const updateTrainer = createAction('[Item] Add to trainer', props<{item: any}>())
+export const updateTrainer = createAction('[Trainer] Update to trainer', props<{item: any}>())
 
-export const removeTrainer = createAction('[Item] Remove from trainer', props<{id: string}>())
+export const removeTrainer = createAction('[Trainer] Remove from trainer', props<{id: string}>())
